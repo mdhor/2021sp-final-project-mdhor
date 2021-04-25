@@ -1,0 +1,16 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pytest = "*"
+pytest-cov = "*"
+pre-commit = "*"
+
+[packages]
+csci-utils = {editable = true, git = "https://github.com/csci-e-29/2021sp-csci-utils-mdhor"}
+django = "*"
+
+[requires]
+python_version = "3.8"
