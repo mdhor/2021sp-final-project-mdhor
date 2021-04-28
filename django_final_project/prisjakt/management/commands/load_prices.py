@@ -1,6 +1,6 @@
 import pandas as pd
 from django.core.management.base import BaseCommand
-from prisjakt.models import Prices
+from prisjakt.models import Prices, Products
 
 
 class Command(BaseCommand):
@@ -23,7 +23,9 @@ class Command(BaseCommand):
                 seller_id=entry.seller_id,
                 seller_name=entry.seller_name,
                 seller_rating=entry.seller_rating,
-                product_number=entry.product_number,
+                product_number=Products.objects.get(
+                    product_number=entry.product_number
+                ),
                 timestamp=entry.timestamp,
                 unique_identifier=str(entry.product_number)
                 + str(entry.seller_id)
