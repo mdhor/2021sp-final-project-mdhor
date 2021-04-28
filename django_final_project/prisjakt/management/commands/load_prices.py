@@ -34,10 +34,3 @@ class Command(BaseCommand):
             for entry in prices.itertuples()
         ]
         Prices.objects.bulk_create(entries, ignore_conflicts=True)
-
-        from django_pandas.io import read_frame
-
-        qs = Prices.objects.all()
-        df = read_frame(qs)
-        df.to_csv("../data/prices_from_db.csv")
-        print(df)

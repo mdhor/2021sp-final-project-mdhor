@@ -22,10 +22,3 @@ class Command(BaseCommand):
             for entry in products.itertuples()
         ]
         Products.objects.bulk_create(entries, ignore_conflicts=True)
-
-        from django_pandas.io import read_frame
-
-        qs = Products.objects.all()
-        df = read_frame(qs)
-        df.to_csv("../data/prods_from_db.csv")
-        print(df)

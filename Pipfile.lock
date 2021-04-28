@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "e17f3a39dec9fea3bc3ad7d976f4ee5074c0f360e0d92dfa78f43e57e840ea30"
+            "sha256": "1acdfbe41a12c796772c90986002713792def7c8d5d2a247212ecb6147f24568"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -154,7 +154,7 @@
         "csci-utils": {
             "editable": true,
             "git": "https://github.com/csci-e-29/2021sp-csci-utils-mdhor",
-            "ref": "45f9570773c8b463286f0e72e44464935df01f1d"
+            "ref": "5277de5652a1dad93cd791b39eb812ea9a37833a"
         },
         "dask": {
             "extras": [
@@ -175,13 +175,13 @@
             "index": "pypi",
             "version": "==3.2"
         },
-        "djangorestframework": {
+        "django-chartjs": {
             "hashes": [
-                "sha256:6d1d59f623a5ad0509fe0d6bfe93cbdfe17b8116ebc8eda86d45f6e16e819aaf",
-                "sha256:f747949a8ddac876e879190df194b925c177cdeb725a099db1460872f7c0a7f2"
+                "sha256:b434c4784c6af216a97b9f25f821bd08f6db70996a0ddc0e51cbcfb4b3937693",
+                "sha256:f7af4107f0d34057d1b8cc63ec16e8edc1bb7be23663c7a614296492d4f396b2"
             ],
             "index": "pypi",
-            "version": "==3.12.4"
+            "version": "==2.2.1"
         },
         "docutils": {
             "hashes": [
@@ -201,9 +201,11 @@
         },
         "et-xmlfile": {
             "hashes": [
-                "sha256:614d9722d572f6246302c4491846d2c393c199cfa4edc9af593437691683335b"
+                "sha256:8eb9e2bc2f8c97e37a2dc85a09ecdcdec9d8a396530a6d5a33b30b9a92da0c5c",
+                "sha256:a2ba85d1d6a74ef63837eed693bcb89c3f752169b0e3e7ae5b16ca5e1b3deada"
             ],
-            "version": "==1.0.1"
+            "markers": "python_version >= '3.6'",
+            "version": "==1.1.0"
         },
         "fastparquet": {
             "hashes": [
@@ -446,11 +448,11 @@
         },
         "pj-scraper": {
             "hashes": [
-                "sha256:5f8c348e12f657568303e9d10189ba8043e1f2c1053e68851f47c322a1ad3d6e",
-                "sha256:ce9b6efbbfa4ba94acd0d598ed2798900060cffb3c2111a6f22cb5a4782b4d36"
+                "sha256:10508c1f78ede7c4ca6b21662e9dc66e6daefa199e1ef37a150f6f11edb3ff53",
+                "sha256:48b4d085a6570ef1c9e0c72bc8c22588a1b1530db6f53de058fee7421a35a26e"
             ],
             "index": "pypi",
-            "version": "==0.0.2"
+            "version": "==0.0.4"
         },
         "python-daemon": {
             "hashes": [
