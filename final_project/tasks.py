@@ -57,9 +57,13 @@ class ScrapePrices(Task):
 
     def run(self):
         s = Scraper()
-        products = pd.read_parquet(self.products.output().path)["product_number"]
+        products = pd.read_parquet(
+            self.products.output().path, columns=["product_number"]
+        )
         products = products.astype(str)
-        prices_and_retailers = s.get_sellers_and_prices_of_product_list(products)
+        prices_and_retailers = s.get_sellers_and_prices_of_product_list(
+            products.product_number
+        )
         prices_and_retailers["timestamp"] = self.now
         with self.output().temporary_path() as fp:
             prices_and_retailers.to_parquet(fp, compression="gzip")
