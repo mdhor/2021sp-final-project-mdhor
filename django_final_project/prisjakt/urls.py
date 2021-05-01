@@ -1,8 +1,8 @@
 from django.urls import path
 
-from .views import line_chart, line_chart_json
+from .views import iphone_line, iphone_scatter
 
 urlpatterns = [
-    path("chart", line_chart, name="line_chart"),
-    path("chartJSON", line_chart_json, name="line_chart_json"),
+    path("line_chart", iphone_line, name="test_chart"),
+    path("scatter_plot", iphone_scatter, name="test_chart"),
 ]
