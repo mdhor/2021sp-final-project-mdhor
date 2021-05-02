@@ -56,7 +56,10 @@ def iphone_scatter(request):
     ).dropna()
 
     fig, ax = plt.subplots(figsize=(20, 10))
-    g = ax.scatter(table_pd.seller_rating, table_pd.price_excl_shipping, s=100)
+    g = plt.scatter(table_pd.seller_rating, table_pd.price_excl_shipping, s=100)
+    plt.xlabel("Seller rating")
+    plt.ylabel("Price excl. shipping")
+    plt.title("Price vs seller rating, for iPhone 12")
     labels = [f"Retailer: {retailer}" for retailer in table_pd.seller_name]
     tooltip = mpld3.plugins.PointLabelTooltip(g, labels=labels)
     mpld3.plugins.connect(fig, tooltip)
