@@ -4,7 +4,7 @@ from unittest.mock import MagicMock, patch
 import pandas as pd
 from pj_scraper.scraper import Scraper
 
-from final_project.tasks import ScrapePrices, ScrapeProducts
+from final_project.tasks import ScrapeProducts  # , ScrapePrices
 
 
 class TestScrapeProducts(TestCase):
@@ -25,13 +25,19 @@ class TestScrapeProducts(TestCase):
 class TestScrapePrices(TestCase):
     @patch("pandas.DataFrame.to_parquet")
     def test_integrated(self, mock_to_parquet):
-        Scraper.get_sellers_and_prices_of_product_list = MagicMock()
-        Scraper.get_sellers_and_prices_of_product_list.return_value = pd.DataFrame(
-            {"col1": [1]}
-        )
+        assert False
 
-        task = ScrapePrices()
-        task.run()
 
-        Scraper.get_sellers_and_prices_of_product_list.assert_called()
-        mock_to_parquet.assert_called()
+class TestLoadProductsToDatabase(TestCase):
+    def test_integrated(self):
+        assert False
+
+
+class TestLoadPricesToDatabase(TestCase):
+    def test_integrated(self):
+        assert False
+
+
+class MiscTests(TestCase):
+    def test_chg_dir_contextmanager(self):
+        assert False
