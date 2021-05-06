@@ -1,10 +1,12 @@
+import os
+from tempfile import TemporaryDirectory
 from unittest import TestCase
 from unittest.mock import MagicMock, patch
 
 import pandas as pd
 from pj_scraper.scraper import Scraper
 
-from final_project.tasks import ScrapeProducts  # , ScrapePrices
+from final_project.tasks import ScrapePrices, ScrapeProducts, change_dir
 
 
 class TestScrapeProducts(TestCase):
@@ -24,8 +26,20 @@ class TestScrapeProducts(TestCase):
 
 class TestScrapePrices(TestCase):
     @patch("pandas.DataFrame.to_parquet")
-    def test_integrated(self, mock_to_parquet):
-        assert False
+    @patch("pandas.read_parquet")
+    def test_integrated(self, mock_from_parquet, mock_to_parquet):
+        Scraper.get_sellers_and_prices_of_product_list = MagicMock()
+        Scraper.get_sellers_and_prices_of_product_list.return_value = pd.DataFrame(
+            {"col1": [1]}
+        )
+
+        mock_from_parquet.return_value = pd.DataFrame({"product_number": [1]})
+
+        task = ScrapePrices()
+        task.run()
+
+        Scraper.get_sellers_and_prices_of_product_list.assert_called()
+        mock_to_parquet.assert_called()
 
 
 class TestLoadProductsToDatabase(TestCase):
@@ -40,4 +54,9 @@ class TestLoadPricesToDatabase(TestCase):
 
 class MiscTests(TestCase):
     def test_chg_dir_contextmanager(self):
-        assert False
+        original_d = os.getcwd()
+        with TemporaryDirectory(dir="./") as td:
+            full_td = original_d + "/" + td.split("/")[-1]
+            with change_dir(td.split("/")[-1]):
+                self.assertEqual(os.getcwd(), full_td)
+            self.assertEqual(os.getcwd(), original_d)
