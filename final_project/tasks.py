@@ -82,12 +82,8 @@ class LoadPricesToDatabase(ExternalProgramTask):
         )
 
     def run(self):
-        # with change_dir("django_final_project"):
-        try:
-            super().run()
-            self.task_complete = True
-        except:
-            raise
+        super().run()
+        self.task_complete = True
 
     def complete(self):
         return self.task_complete
@@ -106,12 +102,8 @@ class LoadProductsToDatabase(ExternalProgramTask):
         )
 
     def run(self):
-        # with change_dir("django_final_project"):
-        try:
-            super().run()
-            self.task_complete = True
-        except:
-            raise
+        super().run()
+        self.task_complete = True
 
     def complete(self):
         return self.task_complete
