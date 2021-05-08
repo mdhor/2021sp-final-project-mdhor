@@ -1,5 +1,6 @@
 import pandas as pd
 from django.core.management.base import BaseCommand
+from django.db import transaction
 from prisjakt.models import Products
 
 
@@ -21,4 +22,5 @@ class Command(BaseCommand):
             )
             for entry in products.itertuples()
         ]
-        Products.objects.bulk_create(entries, ignore_conflicts=True)
+        with transaction.atomic():
+            Products.objects.bulk_create(entries, ignore_conflicts=True)
