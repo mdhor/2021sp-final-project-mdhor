@@ -7,6 +7,9 @@ verify_ssl = true
 pytest = "*"
 pytest-cov = "*"
 pre-commit = "*"
+pytest-django = "*"
+factory-boy = "*"
+django-debug-toolbar = "*"
 
 [packages]
 csci-utils = {editable = true, git = "https://github.com/csci-e-29/2021sp-csci-utils-mdhor"}
@@ -15,6 +18,11 @@ pj-scraper = "*"
 fastparquet = "*"
 seaborn = "*"
 mpld3 = "*"
+django-environ = "*"
+django-model-utils = "*"
+django-crispy-forms = "*"
+django-allauth = "*"
+django-extensions = "*"
 
 [requires]
 python_version = "3.8"

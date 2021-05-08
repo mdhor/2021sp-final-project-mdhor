@@ -77,17 +77,17 @@ class LoadPricesToDatabase(ExternalProgramTask):
     task_complete = False
 
     def program_args(self):
-        return f"python manage.py load_prices --input_path .{self.prices.output().path}".split(
+        return f"pipenv run python manage.py load_prices --input_path {self.prices.output().path}".split(
             " "
         )
 
     def run(self):
-        with change_dir("django_final_project"):
-            try:
-                super().run()
-                self.task_complete = True
-            except:
-                raise
+        # with change_dir("django_final_project"):
+        try:
+            super().run()
+            self.task_complete = True
+        except:
+            raise
 
     def complete(self):
         return self.task_complete
@@ -101,17 +101,17 @@ class LoadProductsToDatabase(ExternalProgramTask):
     task_complete = False
 
     def program_args(self):
-        return f"python manage.py load_products --input_path .{self.products.output().path}".split(
+        return f"pipenv run python manage.py load_products --input_path {self.products.output().path}".split(
             " "
         )
 
     def run(self):
-        with change_dir("django_final_project"):
-            try:
-                super().run()
-                self.task_complete = True
-            except:
-                raise
+        # with change_dir("django_final_project"):
+        try:
+            super().run()
+            self.task_complete = True
+        except:
+            raise
 
     def complete(self):
         return self.task_complete
