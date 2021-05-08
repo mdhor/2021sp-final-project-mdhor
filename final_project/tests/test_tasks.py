@@ -42,16 +42,6 @@ class TestScrapePrices(TestCase):
         mock_to_parquet.assert_called()
 
 
-class TestLoadProductsToDatabase(TestCase):
-    def test_integrated(self):
-        assert False
-
-
-class TestLoadPricesToDatabase(TestCase):
-    def test_integrated(self):
-        assert False
-
-
 class MiscTests(TestCase):
     def test_chg_dir_contextmanager(self):
         original_d = os.getcwd()
