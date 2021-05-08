@@ -56,6 +56,12 @@
               <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="{% url 'prisjakt:test_line_chart' %}">Line</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'prisjakt:test_scatter_plot' %}">Scatter</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="{% url 'about' %}">About</a>
             </li>
             {% if request.user.is_authenticated %}
@@ -92,7 +98,7 @@
       {% endif %}
 
       {% block content %}
-        <p>Use this document as a way to quick start any new project.</p>
+        <p>Welcome to my final project!</p>
       {% endblock content %}
 
     </div> <!-- /container -->
