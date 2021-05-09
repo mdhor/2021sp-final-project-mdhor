@@ -36,6 +36,14 @@ Welcome to my Final Project
 .. end-badges
 
 
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+   pj_scraper
+   modules
+
+
 
 
 ----------------------------------
@@ -114,10 +122,6 @@ The pj-scraper library is centered around the use of a single class, with method
 See repo on Github here: https://github.com/mdhor/pj-scraper#overview
 
 
-.. autoclass:: pj_scraper.scraper.Scraper
-   :members:
-   :undoc-members:
-   :show-inheritance:
 
 -------------------------------------
 
