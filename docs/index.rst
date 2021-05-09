@@ -10,9 +10,12 @@ Welcome to my Final Project
 
 .. list-table::
     :stub-columns: 1
+    :widths: 10 40
 
-    * - Badges
-      - | |travis| |codeclimate| |codeclimate2| |readthedocs|
+    * - Build
+      - | |travis| |codeclimate| |codeclimate2|
+    * - Docs
+      - | |readthedocs|
 
 .. |travis| image:: https://travis-ci.com/mdhor/2021sp-final-project-mdhor.svg?branch=master
     :alt: Travis-CI Build Status
@@ -33,12 +36,6 @@ Welcome to my Final Project
 .. end-badges
 
 
-----------------------------------
-
-.. toctree::
-   :maxdepth: 2
-
-   index
 
 
 ----------------------------------
