@@ -129,6 +129,6 @@ Conclusion and Main Learnings
    * The Prices table is a fact table containing prices for each product and retailer for a given timestamp
    * The Products table is a dim-table containing information about products, like product name and category
 * Developing a simple Django web app
-   * A simple web app has been developed using the chartjs
-   * To avoid unneseccary boilerplate and simplify visuals creation, django-chartjs has been used
-   * A simple visual has been made, that shows ..........
+   * A simple web app has been developed, to showcase how the system could be used in practice
+   * To avoid unneseccary boilerplate and simplify visuals creation, mpld3 has been used
+   * Two simple visuals has been made, that shows two interesting analyses
