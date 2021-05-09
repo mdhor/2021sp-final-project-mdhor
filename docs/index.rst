@@ -26,6 +26,19 @@ from many different retailers. Th products range widely from electronics to clot
 
 -------------------------------------
 
+Quick-Start
+============
+
+If you want to test the project quickly, do the following:
+
+1. Create an environment using the Pipfile
+2. pipenv run python manage.py migrate
+3. pipenv run python -m final_project
+4. pipenv run python manage.py runserver
+5. Enter the server and check out a visual
+
+-------------------------------------
+
 
 Aim of Project
 ==============
