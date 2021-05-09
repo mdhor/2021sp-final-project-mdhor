@@ -4,45 +4,14 @@ prisjakt package
 Submodules
 ----------
 
-prisjakt.admin module
----------------------
+.. toctree::
+   :maxdepth: 4
 
-.. automodule:: prisjakt.admin
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-prisjakt.apps module
---------------------
-
-.. automodule:: prisjakt.apps
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-prisjakt.models module
-----------------------
-
-.. automodule:: prisjakt.models
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-prisjakt.urls module
---------------------
-
-.. automodule:: prisjakt.urls
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-prisjakt.views module
----------------------
-
-.. automodule:: prisjakt.views
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   prisjakt.admin
+   prisjakt.apps
+   prisjakt.models
+   prisjakt.urls
+   prisjakt.views
 
 Module contents
 ---------------

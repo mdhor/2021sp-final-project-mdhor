@@ -4,29 +4,11 @@ final\_project package
 Submodules
 ----------
 
-final\_project.cli module
--------------------------
+.. toctree::
+   :maxdepth: 4
 
-.. automodule:: final_project.cli
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-final\_project.conftest module
-------------------------------
-
-.. automodule:: final_project.conftest
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-final\_project.tasks module
----------------------------
-
-.. automodule:: final_project.tasks
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   final_project.cli
+   final_project.tasks
 
 Module contents
 ---------------

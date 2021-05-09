@@ -14,6 +14,7 @@ import os
 import sys
 
 import django
+from sphinx.ext.apidoc import main
 
 sys.path.insert(0, os.path.abspath(".."))
 
@@ -56,3 +57,24 @@ html_theme = "sphinx_rtd_theme"
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
+
+
+main(
+    [
+        "-e",
+        "-f",
+        "-o",
+        ".",
+        "..",
+        "../final_project/contrib*",
+        "../final_project/conftest*",
+        "../final_project/users*",
+        "../final_project/tests*",
+        "../final_project/utils*",
+        "../prisjakt/migrations*",
+        "../conftest*",
+        "../manage*",
+        "../config*",
+        "../modules*",
+    ]
+)

@@ -19,14 +19,8 @@ matrix:
       script:
         - pipenv run python manage.py migrate
         - pipenv run python -m final_project
-    - stage: apidoc
-      script:
-        - sphinx-apidoc -o ./docs/ . ./final_project/contrib* ./final_project/users* ./final_project/tests* ./final_project/utils* ./prisjakt/migrations* ./conftest* ./manage* ./config* ./modules* -f
-
-
 
 stages:
-  - apidoc
   - Test
   - name: Deploy
     if: branch = master
