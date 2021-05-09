@@ -57,7 +57,7 @@ Data on pricing and assortment can be used for several insightful analyses. One 
 Another example is assortment analysis; "How does our assortment compare to competitors?".
 
 prisjakt.no is a leading actor within price comparison in Norway. It acts as an "all-inclusive" shopping mall, so the consumer does not have to browse many different website, by comparing pricing
-from many different retailers. Th products range widely from electronics to clothing to vehicles.
+from many different retailers. The products range widely from electronics, to clothing, to vehicles.
 
 -------------------------------------
 
@@ -89,8 +89,8 @@ The project aims to create a full stack data science pipeline, from mining prisj
 The project can be split into four main workflows:
 
 * Developing pj-scraper, a library that will act as a simplified interface for scraping of prisjakt.no
-* Organizing the pipeline into Luigi Tasks, for organizing the workflow all the way from handling scraping to appending data in a Django database
-* Creating a Django database that will contain the historical data that has been scraped from prisjakt.no
+* Organizing the pipeline into Luigi Tasks, all the way from handling scraping to appending data in a Django database
+* Creating a Django database that will contain the data that has been scraped from prisjakt.no
 * Developing a simple Django web app to show a simple example of how the data can be used for analysis
 
 ----------------------------------
