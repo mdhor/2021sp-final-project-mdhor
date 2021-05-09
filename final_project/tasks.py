@@ -78,7 +78,7 @@ class LoadPricesToDatabase(ExternalProgramTask):
     task_complete = False
 
     def program_args(self):
-        return f"pipenv run python manage.py load_prices --input_path {self.prices.output().path}".split(
+        return f"python manage.py load_prices --input_path {self.prices.output().path}".split(
             " "
         )
 
@@ -98,7 +98,7 @@ class LoadProductsToDatabase(ExternalProgramTask):
     task_complete = False
 
     def program_args(self):
-        return f"pipenv run python manage.py load_products --input_path {self.products.output().path}".split(
+        return f"python manage.py load_products --input_path {self.products.output().path}".split(
             " "
         )
 
