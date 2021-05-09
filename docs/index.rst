@@ -3,11 +3,46 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Final Project, CSCI E-29's documentation!
+Welcome to my Final Project
 ====================================================================
+
+.. start-badges
+
+.. list-table::
+    :stub-columns: 1
+
+    * - Badges
+      - | |travis| |codeclimate| |codeclimate2| |readthedocs|
+
+.. |travis| image:: https://travis-ci.com/mdhor/2021sp-final-project-mdhor.svg?branch=master
+    :alt: Travis-CI Build Status
+    :target: https://travis-ci.com/github/mdhor/2021sp-final-project-mdhor
+
+.. |codeclimate| image:: https://api.codeclimate.com/v1/badges/7469f8aaac5c1798b9e4/maintainability
+   :target: https://codeclimate.com/github/csci-e-29/2021sp-final-project-mdhor
+   :alt: CodeClimate Quality Status
+
+.. |codeclimate2| image:: https://api.codeclimate.com/v1/badges/7469f8aaac5c1798b9e4/test_coverage
+   :target: https://codeclimate.com/github/csci-e-29/2021sp-final-project-mdhor
+   :alt: CodeClimate Coverage Status
+
+.. |readthedocs| image:: https://readthedocs.org/projects/2021sp-final-project-mdhor/badge/?version=latest
+   :target: https://2021sp-final-project-mdhor.readthedocs.io/en/latest/?badge=latest
+   :alt: Documentation Status
+
+.. end-badges
 
 
 ----------------------------------
+
+.. toctree::
+   :maxdepth: 2
+
+   index
+
+
+----------------------------------
+
 
 Introduction
 ============
@@ -31,13 +66,20 @@ Quick-Start
 
 If you want to test the project quickly, do the following:
 
-1. Create an environment using the Pipfile
-2. pipenv run python manage.py migrate
-3. pipenv run python -m final_project
-4. pipenv run python manage.py runserver
-5. Enter the server and check out a visual
+#. Clone the repo and create an environment using the Pipfile
+
+#. Run the following commands:
+
+   * pipenv run python manage.py migrate
+
+   * pipenv run python -m final_project
+
+   * pipenv run python manage.py runserver
+
+#. Enter the server and check out a visual
 
 -------------------------------------
+
 
 
 Aim of Project
@@ -50,6 +92,8 @@ The project can be split into four main workflows:
 * Organizing the pipeline into Luigi Tasks, for organizing the workflow all the way from handling scraping to appending data in a Django database
 * Creating a Django database that will contain the historical data that has been scraped from prisjakt.no
 * Developing a simple Django web app to show a simple example of how the data can be used for analysis
+
+----------------------------------
 
 
 High-Level Workflow
@@ -70,6 +114,7 @@ The pj-scraper library is centered around the use of a single class, with method
 * Getting all products from a category, e.g. all from the category "smartphones"
 * Getting all retailers and prices for a product, e.g. all from the product "iPhone 12"
 
+See repo on Github here: https://github.com/mdhor/pj-scraper#overview
 
 
 .. autoclass:: pj_scraper.scraper.Scraper
@@ -89,26 +134,62 @@ The workflow consists of four main tasks:
 * Append any new products to database
 * Append all prices to the database with a new timestamp
 
+The two tasks handling scraping both write to a parquet target which is salted. The salt is a function of the parameters,
+as well the current day of the year, to avoid scraping prices more than once a day. This could in future be changed to be once per hour or even per minute.
 
-.. automodule:: final_project.tasks
-   :members:
-   :undoc-members:
-   :show-inheritance:
+Below are descriptions of each tasks, with pseudo code.
+
+**Scrape product IDs**
+
+.. image:: ./images/product_ids.png
+  :width: 800
+
+**Scrape retailers and prices**
+
+.. image:: ./images/scrape_prices.png
+  :width: 800
+
+**Load product IDs to DB**
+
+.. image:: ./images/task_load_prods.png
+  :width: 800
+
+**Load retailers and prices to DB**
+
+.. image:: ./images/task_load_prices.png
+  :width: 800
+
 
 -------------------------------------
 
 Django Database
 ===============
 
-Not yet added to docs
+The database is structured as a star schema. The fact table contains prices per retailer per timestamp per product.
+The unique identifier for this table is the combination of timestamp, retailer and product. In future, this schema is
+easily expandable with new dim-tables containing information on e.g. the retailers. Here is the schema:
+
+.. image:: ./images/database.png
+  :width: 800
+
+
 
 -------------------------------------
 
 Django Web-App
 ==============
 
-Not yet added to docs
+The web app for now only contains two simple visuals:
 
+* A line chart showing the historical prices of an iPhone 12, for the 10 retailers with lowest price today
+* A scatter plot showing retailer rating on the x-axis and price in the y-axis
+
+The visuals have been created using the following procedure:
+
+#. Query the DB to get only the needed data for the visual
+#. Load data into a pandas dataframe
+#. Use matplotlib to create the graph
+#. Use mpld3 to convert the graph into html
 
 
 -------------------------------------
@@ -132,3 +213,14 @@ Conclusion and Main Learnings
    * A simple web app has been developed, to showcase how the system could be used in practice
    * To avoid unneseccary boilerplate and simplify visuals creation, mpld3 has been used
    * Two simple visuals has been made, that shows two interesting analyses
+
+
+-------------------------------------
+
+Future Work
+==============================
+
+Before this project would have real value, two main things are missing:
+
+* Move the system to the cloud and schedule Luigi to run with certain intervals
+* Create insightful analyses based on inputs from potential users of the system
