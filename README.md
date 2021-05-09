@@ -1,5 +1,6 @@
 
 
+[![Build Status](https://travis-ci.com/mdhor/2021sp-final-project-mdhor.svg?branch=master)](https://travis-ci.com/mdhor/2021sp-final-project-mdhor) [![Documentation Status](https://readthedocs.org/projects/2021sp-final-project-mdhor/badge/?version=latest)](https://2021sp-final-project-mdhor.readthedocs.io/en/latest/?badge=latest) [![Maintainability](https://api.codeclimate.com/v1/badges/7469f8aaac5c1798b9e4/maintainability)](https://codeclimate.com/repos/6097abd9dd9d1a0176002b17/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/7469f8aaac5c1798b9e4/test_coverage)](https://codeclimate.com/repos/6097abd9dd9d1a0176002b17/test_coverage)
 
 
 # Final Project
