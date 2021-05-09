@@ -10,6 +10,14 @@ class FinalProjectWrapper(WrapperTask):
 
 
 def main():
+
+    # Fix for removing unwanted logging by requests/bs4 in Travis
+    import os
+    import sys
+
+    f = open(os.devnull, "w")
+    sys.stdout = f
+
     build(
         [
             FinalProjectWrapper(
@@ -17,4 +25,5 @@ def main():
             )
         ],
         local_scheduler=True,
+        log_level="INFO",
     )

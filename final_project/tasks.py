@@ -30,6 +30,7 @@ class ScrapeProducts(Task):
     def run(self):
         s = Scraper()
         all_products = pd.DataFrame()
+
         for category in self.categories:
             temp_df = s.get_all_products_from_category(category, no_pages=self.no_pages)
             all_products = all_products.append(temp_df)
