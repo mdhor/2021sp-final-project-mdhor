@@ -1,9 +1,15 @@
+import os
 from unittest.mock import MagicMock
 
+import django
 from csci_utils.canvas.canvas import SubmissionHelper
 from environs import Env
 from luigi import WrapperTask, build
 from luigi.util import requires
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings.local")
+django.setup()
+
 
 from .tasks import LoadPricesToDatabase, LoadProductsToDatabase
 

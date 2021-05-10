@@ -8,6 +8,7 @@ Submodules
    :maxdepth: 4
 
    final_project.cli
+   final_project.django_target
    final_project.tasks
 
 Module contents

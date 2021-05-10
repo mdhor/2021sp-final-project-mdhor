@@ -24,4 +24,4 @@ class Command(BaseCommand):
             for entry in products.itertuples()
         ]
         with transaction.atomic():
-            Products.objects.bulk_create(entries, ignore_conflicts=True)
+            Products.objects.bulk_create(list(set(entries)), ignore_conflicts=True)

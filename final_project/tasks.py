@@ -10,6 +10,9 @@ from luigi.contrib.external_program import ExternalProgramTask
 from luigi.util import inherits
 from pj_scraper.scraper import Scraper
 
+from final_project.django_target import DjangoModelTarget
+from prisjakt.models import Prices, Products
+
 
 class ScrapeProducts(Task):
 
@@ -75,7 +78,6 @@ class LoadPricesToDatabase(ExternalProgramTask):
 
     prices = Requirement(ScrapePrices)
     requires = Requires()
-    task_complete = False
 
     def program_args(self):
         return f"python manage.py load_prices --input_path {self.prices.output().path}".split(
@@ -84,10 +86,19 @@ class LoadPricesToDatabase(ExternalProgramTask):
 
     def run(self):
         super().run()
-        self.task_complete = True
 
-    def complete(self):
-        return self.task_complete
+    def output(self):
+        ids = pd.read_parquet(
+            self.prices.output().path,
+            columns=["product_number", "seller_id", "timestamp"],
+        )
+        ids = [
+            str(entry.product_number)
+            + str(entry.seller_id)
+            + str(entry.timestamp.timetuple().tm_yday)
+            for entry in ids.itertuples()
+        ]
+        return DjangoModelTarget(Prices, unique_identifier=list(set(ids)))
 
 
 @inherits(ScrapeProducts)
@@ -95,7 +106,6 @@ class LoadProductsToDatabase(ExternalProgramTask):
 
     products = Requirement(ScrapeProducts)
     requires = Requires()
-    task_complete = False
 
     def program_args(self):
         return f"python manage.py load_products --input_path {self.products.output().path}".split(
@@ -104,10 +114,11 @@ class LoadProductsToDatabase(ExternalProgramTask):
 
     def run(self):
         super().run()
-        self.task_complete = True
 
-    def complete(self):
-        return self.task_complete
+    def output(self):
+        ids = pd.read_parquet(self.products.output().path, columns=["product_number"])
+        ids = ids.product_number.values
+        return DjangoModelTarget(Products, product_number=list(set(ids)))
 
 
 @contextmanager

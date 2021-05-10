@@ -36,4 +36,4 @@ class Command(BaseCommand):
             for entry in prices.itertuples()
         ]
         with transaction.atomic():
-            Prices.objects.bulk_create(entries, ignore_conflicts=True)
+            Prices.objects.bulk_create(list(set(entries)), ignore_conflicts=True)
