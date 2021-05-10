@@ -20,7 +20,7 @@ class FinalProjectWrapper(WrapperTask):
 
 
 def main():
-
+    """ Main for running project and submitting """
     # Fix for removing unwanted logging by requests/bs4 in Travis
     import os
     import sys

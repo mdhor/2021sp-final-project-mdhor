@@ -22,6 +22,7 @@ class DjangoModelTarget(Target):
             raise RuntimeError("More than one unique key")
 
     def get(self):
+        """ Get the objects matching the keys """
         return self.model.objects.filter(
             **{f"{key}__in": value for key, value in self.unique.items()}
         )
